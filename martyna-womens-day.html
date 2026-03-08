@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wszystkiego najlepszego Martynko! 🌸</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --pink: #ff85a1;
+      --hot-pink: #ff4d79;
+      --light-pink: #ffe4ed;
+      --pale: #fff0f5;
+      --red: #ff2255;
+      --cream: #fff8fb;
+      --gold: #ffd700;
+      --green: #b5ead7;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--pale);
+      font-family: 'Nunito', sans-serif;
+      overflow-x: hidden;
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E🌸%3C/text%3E%3C/svg%3E") 16 16, auto;
+    }
+
+    /* ===== SPARKLES / FLOATING ===== */
+    .sparkle-field {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .sp {
+      position: absolute;
+      font-size: 1.4rem;
+      animation: floatUp linear infinite;
+      opacity: 0;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 50px 20px 20px;
+    }
+
+    .bow {
+      display: inline-block;
+      font-size: 5rem;
+      animation: wiggle 1.5s ease-in-out infinite;
+      filter: drop-shadow(0 4px 10px rgba(255,77,121,0.4));
+    }
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(-8deg) scale(1); }
+      50%       { transform: rotate(8deg) scale(1.08); }
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(2rem, 7vw, 4.5rem);
+      color: var(--hot-pink);
+      text-shadow: 3px 3px 0 #fff, 5px 5px 0 rgba(255,77,121,0.25);
+      line-height: 1.15;
+      margin: 10px 0 6px;
+      animation: popIn 0.8s cubic-bezier(.34,1.56,.64,1) both;
+    }
+    @keyframes popIn {
+      from { transform: scale(0.5) rotate(-5deg); opacity: 0; }
+      to   { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--pink);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== HELLO KITTY SVG ===== */
+    .kitty-wrap {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      margin: 20px 0 0;
+      animation: bouncein 1s cubic-bezier(.34,1.56,.64,1) 0.3s both;
+    }
+    @keyframes bouncein {
+      from { transform: scale(0) translateY(40px); opacity: 0; }
+      to   { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    .kitty-svg {
+      width: 200px;
+      filter: drop-shadow(0 10px 30px rgba(255,133,161,0.5));
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-14px); }
+    }
+
+    /* ===== BOUQUET ===== */
+    .bouquet-section {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 10px 20px 0;
+    }
+    .bouquet {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 4px;
+      flex-wrap: wrap;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* SVG flower */
+    .flower-stem {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: sway 2.5s ease-in-out infinite;
+      transform-origin: bottom center;
+    }
+    .flower-stem:nth-child(odd)  { animation-direction: alternate; animation-duration: 2.8s; }
+    .flower-stem:nth-child(even) { animation-direction: alternate-reverse; animation-duration: 3.2s; }
+    @keyframes sway {
+      0%   { transform: rotate(-4deg); }
+      100% { transform: rotate(4deg); }
+    }
+
+    .flower-emoji {
+      font-size: clamp(2.8rem, 6vw, 4rem);
+      filter: drop-shadow(0 4px 8px rgba(255,100,130,0.35));
+      transition: transform 0.2s;
+      cursor: default;
+    }
+    .flower-emoji:hover {
+      transform: scale(1.35) rotate(15deg);
+      filter: drop-shadow(0 8px 20px rgba(255,100,130,0.6));
+    }
+    .stem-line {
+      width: 4px;
+      background: linear-gradient(to bottom, #5cb85c, #3a7a3a);
+      border-radius: 2px;
+    }
+
+    /* ===== MESSAGE CARD ===== */
+    .card-wrap {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      padding: 30px 20px 10px;
+    }
+    .card {
+      background: #fff;
+      border: 3px solid var(--pink);
+      border-radius: 30px;
+      padding: 35px 40px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 8px 8px 0 var(--light-pink), 0 20px 50px rgba(255,133,161,0.2);
+      position: relative;
+      overflow: hidden;
+      animation: slideUp 0.9s cubic-bezier(.34,1.56,.64,1) 0.5s both;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(60px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 120px; height: 120px;
+      background: var(--light-pink);
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+    .card::after {
+      content: '🎀';
+      position: absolute;
+      top: 14px; right: 20px;
+      font-size: 1.8rem;
+      animation: wiggle 2s ease-in-out infinite;
+    }
+
+    .card-title {
+      font-family: 'Pacifico', cursive;
+      color: var(--hot-pink);
+      font-size: 1.6rem;
+      margin-bottom: 18px;
+    }
+    .card p {
+      color: #555;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      font-weight: 600;
+    }
+    .card p + p { margin-top: 12px; }
+    .card .highlight {
+      color: var(--hot-pink);
+      font-weight: 800;
+    }
+
+    /* ===== HEARTS ROW ===== */
+    .hearts-row {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      font-size: 2rem;
+      padding: 14px 0 8px;
+      letter-spacing: 0.2em;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.06); }
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 14px 20px 36px;
+      color: var(--pink);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    /* ===== CONFETTI BURST on click ===== */
+    .confetti-piece {
+      position: fixed;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      animation: confettiFly 1.2s ease-out forwards;
+    }
+    @keyframes confettiFly {
+      0%   { transform: translate(0,0) rotate(0deg); opacity: 1; }
+      100% { transform: translate(var(--dx), var(--dy)) rotate(720deg); opacity: 0; }
+    }
+
+    /* ===== RIBBON TOP BORDER ===== */
+    .ribbon-border {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 8px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--hot-pink) 0px, var(--hot-pink) 20px,
+        var(--gold) 20px, var(--gold) 40px,
+        var(--pink) 40px, var(--pink) 60px,
+        #fff 60px, #fff 80px
+      );
+      z-index: 100;
+    }
+
+    /* ===== STAR BURST ===== */
+    .starburst {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      padding: 0 20px 10px;
+      flex-wrap: wrap;
+    }
+    .star-pill {
+      background: linear-gradient(135deg, var(--hot-pink), #ff9bb5);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.9rem;
+      padding: 8px 20px;
+      border-radius: 50px;
+      box-shadow: 0 4px 14px rgba(255,77,121,0.4);
+      animation: popIn 0.7s cubic-bezier(.34,1.56,.64,1) both;
+      transition: transform 0.2s;
+    }
+    .star-pill:hover { transform: scale(1.08) rotate(-2deg); }
+    .star-pill:nth-child(1) { animation-delay: 0.2s; }
+    .star-pill:nth-child(2) { animation-delay: 0.35s; }
+    .star-pill:nth-child(3) { animation-delay: 0.5s; }
+  </style>
+</head>
+<body>
+
+  <div class="ribbon-border"></div>
+
+  <!-- Floating sparkles -->
+  <div class="sparkle-field" id="sparkleField"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="bow">🎀</div>
+    <h1>Szczęśliwego Dnia<br>Kobiet, Martynko! 🌸</h1>
+    <p class="subtitle">✨ 8 Marca — Dzień Kobiet ✨</p>
+  </header>
+
+  <!-- Hello Kitty -->
+  <div class="kitty-wrap">
+    <svg class="kitty-svg" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- Body -->
+      <ellipse cx="100" cy="170" rx="55" ry="48" fill="#fff" stroke="#ffb3c6" stroke-width="2.5"/>
+      <!-- Arms -->
+      <ellipse cx="42" cy="168" rx="15" ry="10" fill="#fff" stroke="#ffb3c6" stroke-width="2" transform="rotate(-20 42 168)"/>
+      <ellipse cx="158" cy="168" rx="15" ry="10" fill="#fff" stroke="#ffb3c6" stroke-width="2" transform="rotate(20 158 168)"/>
+      <!-- Legs -->
+      <ellipse cx="80" cy="212" rx="14" ry="9" fill="#fff" stroke="#ffb3c6" stroke-width="2"/>
+      <ellipse cx="120" cy="212" rx="14" ry="9" fill="#fff" stroke="#ffb3c6" stroke-width="2"/>
+      <!-- Head -->
+      <ellipse cx="100" cy="100" rx="65" ry="62" fill="#fff" stroke="#ffb3c6" stroke-width="2.5"/>
+      <!-- Ears -->
+      <ellipse cx="47" cy="50" rx="18" ry="18" fill="#fff" stroke="#ffb3c6" stroke-width="2.5"/>
+      <ellipse cx="153" cy="50" rx="18" ry="18" fill="#fff" stroke="#ffb3c6" stroke-width="2.5"/>
+      <!-- Ear inner -->
+      <ellipse cx="47" cy="50" rx="10" ry="10" fill="#ffccd5"/>
+      <ellipse cx="153" cy="50" rx="10" ry="10" fill="#ffccd5"/>
+      <!-- Big red bow -->
+      <g transform="translate(120, 52)">
+        <ellipse cx="-12" cy="0" rx="16" ry="10" fill="#ff2255" transform="rotate(-30 -12 0)"/>
+        <ellipse cx="12" cy="0" rx="16" ry="10" fill="#ff2255" transform="rotate(30 12 0)"/>
+        <circle cx="0" cy="0" r="7" fill="#ff4d79"/>
+        <!-- bow highlights -->
+        <ellipse cx="-14" cy="-3" rx="6" ry="3" fill="rgba(255,255,255,0.35)" transform="rotate(-30 -14 -3)"/>
+        <ellipse cx="14" cy="-3" rx="6" ry="3" fill="rgba(255,255,255,0.35)" transform="rotate(30 14 -3)"/>
+      </g>
+      <!-- Eyes -->
+      <ellipse cx="82" cy="105" rx="6" ry="7" fill="#222"/>
+      <ellipse cx="118" cy="105" rx="6" ry="7" fill="#222"/>
+      <!-- Eye shine -->
+      <circle cx="84" cy="102" r="2" fill="#fff"/>
+      <circle cx="120" cy="102" r="2" fill="#fff"/>
+      <!-- Nose -->
+      <ellipse cx="100" cy="116" rx="5" ry="3.5" fill="#ff85a1"/>
+      <!-- Whiskers left -->
+      <line x1="20" y1="108" x2="82" y2="114" stroke="#bbb" stroke-width="1.5"/>
+      <line x1="20" y1="118" x2="82" y2="118" stroke="#bbb" stroke-width="1.5"/>
+      <line x1="20" y1="128" x2="82" y2="122" stroke="#bbb" stroke-width="1.5"/>
+      <!-- Whiskers right -->
+      <line x1="180" y1="108" x2="118" y2="114" stroke="#bbb" stroke-width="1.5"/>
+      <line x1="180" y1="118" x2="118" y2="118" stroke="#bbb" stroke-width="1.5"/>
+      <line x1="180" y1="128" x2="118" y2="122" stroke="#bbb" stroke-width="1.5"/>
+      <!-- Outfit bow on chest -->
+      <g transform="translate(100, 155)">
+        <ellipse cx="-10" cy="0" rx="12" ry="8" fill="#ff85a1" transform="rotate(-20 -10 0)"/>
+        <ellipse cx="10" cy="0" rx="12" ry="8" fill="#ff85a1" transform="rotate(20 10 0)"/>
+        <circle cx="0" cy="0" r="5" fill="#ff4d79"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Flowers bouquet -->
+  <div class="bouquet-section">
+    <div class="bouquet" id="bouquet"></div>
+  </div>
+
+  <!-- Pills / tags -->
+  <div class="starburst">
+    <div class="star-pill">🌹 Jesteś wyjątkowa!</div>
+    <div class="star-pill">💖 Kochana i ceniona</div>
+    <div class="star-pill">✨ Najpiękniejsza!</div>
+  </div>
+
+  <!-- Message card -->
+  <div class="card-wrap">
+    <div class="card">
+      <div class="card-title">💌 Dla Ciebie, Martynko</div>
+      <p>
+        Dziś jest Twój dzień — dzień wyjątkowych, niesamowitych kobiet takich jak Ty! 🌸
+        Życzę Ci, żeby każdy dzień był tak piękny jak Ty,
+        pełen miłości, radości i uśmiechów.
+      </p>
+      <p>
+        Jesteś <span class="highlight">moją ukochaną</span>, moją inspiracją
+        i najpiękniejszą osobą w moim życiu. 💕
+        Dziękuję Ci za każdą chwilę spędzoną razem.
+      </p>
+      <p>
+        🎀 <span class="highlight">Wszystkiego najlepszego z okazji Dnia Kobiet!</span> 🎀<br>
+        Kocham Cię całym sercem. ❤️
+      </p>
+    </div>
+  </div>
+
+  <!-- Hearts -->
+  <div class="hearts-row">💗 💖 💗 💖 💗</div>
+
+  <footer>
+    Zrobione z miłością, tylko dla Ciebie, Martynko 🌸 &nbsp;|&nbsp; 8 Marca 2026
+  </footer>
+
+  <script>
+    // ─── Floating sparkle emojis ───
+    const emojis = ['🌸','🌺','🌷','💖','✨','🎀','🌹','💕','⭐','🩷'];
+    const field = document.getElementById('sparkleField');
+    for (let i = 0; i < 28; i++) {
+      const sp = document.createElement('div');
+      sp.className = 'sp';
+      sp.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      sp.style.left = Math.random() * 100 + 'vw';
+      sp.style.animationDuration = (6 + Math.random() * 10) + 's';
+      sp.style.animationDelay = (Math.random() * 12) + 's';
+      sp.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+      field.appendChild(sp);
+    }
+
+    // ─── Bouquet flowers ───
+    const flowers = [
+      { emoji: '🌹', h: 100 },
+      { emoji: '🌷', h: 80 },
+      { emoji: '🌸', h: 70 },
+      { emoji: '🌺', h: 90 },
+      { emoji: '🌹', h: 110 },
+      { emoji: '🌷', h: 95 },
+      { emoji: '🌸', h: 75 },
+      { emoji: '🌺', h: 85 },
+      { emoji: '🌹', h: 100 },
+      { emoji: '🌷', h: 78 },
+      { emoji: '🌸', h: 88 },
+    ];
+    const bouquet = document.getElementById('bouquet');
+    flowers.forEach(f => {
+      const stem = document.createElement('div');
+      stem.className = 'flower-stem';
+      stem.innerHTML = `
+        <span class="flower-emoji">${f.emoji}</span>
+        <div class="stem-line" style="height:${f.h}px"></div>
+      `;
+      bouquet.appendChild(stem);
+    });
+
+    // ─── Confetti burst on click ───
+    const colors = ['#ff2255','#ff85a1','#ffd700','#ff4d79','#ffb3c6','#fff','#b5ead7'];
+    document.addEventListener('click', e => {
+      for (let i = 0; i < 18; i++) {
+        const c = document.createElement('div');
+        c.className = 'confetti-piece';
+        c.style.left = e.clientX + 'px';
+        c.style.top  = e.clientY + 'px';
+        c.style.background = colors[Math.floor(Math.random() * colors.length)];
+        const angle = Math.random() * Math.PI * 2;
+        const dist  = 60 + Math.random() * 100;
+        c.style.setProperty('--dx', Math.cos(angle) * dist + 'px');
+        c.style.setProperty('--dy', Math.sin(angle) * dist + 'px');
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 1300);
+      }
+    });
+  </script>
+</body>
+</html>
